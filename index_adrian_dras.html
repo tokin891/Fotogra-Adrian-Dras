@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adrian Dras — Fotograf sylwetkowy &amp; content creator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0A0C10;
+    --black-2:#12151D;
+    --black-3:#1B1F2A;
+    --blue-deep:#12379E;
+    --blue:#2F63F0;
+    --blue-bright:#5C8CFF;
+    --ice:#EDF2FB;
+    --ice-2:#DEE7F9;
+    --white:#FFFFFF;
+    --grey:#7C879C;
+    --grey-light:#B8C2D6;
+    --cut:20px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--white);
+    color:var(--black);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; cursor:pointer; border:none; background:none; color:inherit; }
+  ul{ list-style:none; margin:0; padding:0; }
+  section{ scroll-margin-top:84px; }
+
+  h1,h2,h3,h4{
+    font-family:'Archivo',sans-serif;
+    font-weight:900;
+    line-height:1.02;
+    letter-spacing:-0.02em;
+    margin:0;
+  }
+
+  .container{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  .eyebrow-free{ margin-bottom:18px; }
+
+  .section-heading{
+    font-size:clamp(2rem,3.6vw,3rem);
+    max-width:14ch;
+  }
+
+  .section-intro{
+    font-size:1.05rem;
+    color:var(--grey);
+    max-width:46ch;
+    margin-top:16px;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 30px;
+    font-weight:700;
+    font-size:0.95rem;
+    font-family:'Inter',sans-serif;
+    clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%);
+    transition:transform .18s ease, background .18s ease;
+  }
+  .btn:focus-visible{ outline:3px solid var(--blue-bright); outline-offset:3px; }
+  .btn-primary{
+    background:var(--blue);
+    color:var(--white);
+  }
+  .btn-primary:hover{ background:var(--blue-deep); transform:translateY(-2px); }
+  .btn-outline{
+    background:transparent;
+    color:var(--white);
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,0.5);
+  }
+  .btn-outline:hover{ box-shadow:inset 0 0 0 2px var(--white); transform:translateY(-2px); }
+  .btn-outline-dark{
+    color:var(--black);
+    box-shadow:inset 0 0 0 2px rgba(10,12,16,0.35);
+  }
+  .btn-outline-dark:hover{ box-shadow:inset 0 0 0 2px var(--black); transform:translateY(-2px); }
+  .btn-small{ padding:11px 20px; font-size:0.85rem; }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    padding:22px 0;
+    transition:background .25s ease, padding .25s ease, box-shadow .25s ease;
+  }
+  header.nav.scrolled{
+    background:rgba(10,12,16,0.92);
+    backdrop-filter:blur(10px);
+    padding:14px 0;
+    box-shadow:0 8px 30px rgba(0,0,0,0.25);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    font-family:'Archivo',sans-serif;
+    font-weight:900;
+    font-size:1.05rem;
+    color:var(--white);
+    letter-spacing:-0.01em;
+  }
+  .logo span{ color:var(--blue-bright); }
+  .nav-links{
+    display:flex;
+    gap:34px;
+  }
+  .nav-links a{
+    color:var(--grey-light);
+    font-size:0.94rem;
+    font-weight:500;
+    position:relative;
+    padding-bottom:4px;
+  }
+  .nav-links a::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:0;
+    width:0; height:2px;
+    background:var(--blue-bright);
+    transition:width .2s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{ color:var(--white); }
+  .nav-links a:hover::after, .nav-links a:focus-visible::after{ width:100%; }
+  .nav-cta{ display:flex; align-items:center; gap:22px; }
+  .nav-cta .btn{ padding:11px 22px; font-size:0.85rem; }
+
+  .burger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    padding:6px;
+  }
+  .burger span{
+    width:24px; height:2px;
+    background:var(--white);
+    transition:transform .25s ease, opacity .25s ease;
+  }
+  .burger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .burger.open span:nth-child(2){ opacity:0; }
+  .burger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:var(--black);
+    color:var(--white);
+    padding:170px 0 0;
+    overflow:hidden;
+    clip-path:polygon(0 0,100% 0,100% calc(100% - 90px),0 100%);
+  }
+  .hero::before{
+    content:'';
+    position:absolute;
+    top:-10%; right:-8%;
+    width:60%; height:120%;
+    background:linear-gradient(135deg,var(--blue-deep),var(--blue) 60%,var(--blue-bright));
+    clip-path:polygon(30% 0,100% 0,70% 100%,0% 100%);
+    opacity:0.9;
+  }
+  .hero-grid{
+    position:relative;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+    padding-bottom:110px;
+  }
+  .hero-copy{
+    opacity:0;
+    transform:translateY(18px);
+    animation:heroIn .7s ease forwards;
+  }
+  .hero-copy h1{
+    font-size:clamp(2.6rem,5.6vw,4.6rem);
+    text-transform:uppercase;
+  }
+  .hero-copy h1 .l2{ color:var(--blue-bright); display:block; }
+  .hero-copy p{
+    margin-top:26px;
+    max-width:44ch;
+    color:var(--grey-light);
+    font-size:1.08rem;
+  }
+  .hero-actions{
+    margin-top:36px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .hero-visual{
+    position:relative;
+    opacity:0;
+    transform:translateY(18px);
+    animation:heroIn .7s ease .18s forwards;
+  }
+  .ph{
+    position:relative;
+    background:linear-gradient(160deg,var(--black-3),var(--black-2));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:10px;
+    color:var(--grey-light);
+    border:1px solid rgba(255,255,255,0.08);
+  }
+  .ph svg{ width:34px; height:34px; opacity:0.7; }
+  .ph span{ font-size:0.8rem; letter-spacing:0.02em; opacity:0.75; }
+  .ph-hero{
+    aspect-ratio:4/5;
+    clip-path:polygon(0 0,100% 0,100% 100%,0 100%,0 20%,10% 0);
+  }
+  .stat-chip{
+    position:absolute;
+    background:var(--white);
+    color:var(--black);
+    padding:14px 18px;
+    clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);
+    box-shadow:0 14px 30px rgba(0,0,0,0.35);
+  }
+  .stat-chip strong{ display:block; font-family:'Archivo',sans-serif; font-weight:900; font-size:1.05rem; color:var(--blue-deep); }
+  .stat-chip span{ font-size:0.78rem; color:var(--grey); }
+  .chip-1{ top:-18px; left:-18px; }
+  .chip-2{ bottom:22px; right:-22px; }
+
+  @keyframes heroIn{ to{ opacity:1; transform:translateY(0); } }
+
+  /* ---------- ABOUT ---------- */
+  .about{ background:var(--ice); padding:120px 0 100px; }
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:64px;
+    align-items:center;
+  }
+  .ph-about{
+    aspect-ratio:3/4;
+    background:linear-gradient(150deg,var(--blue-deep),var(--black-2));
+    clip-path:polygon(12% 0,100% 0,100% 88%,88% 100%,0 100%,0 12%);
+    color:rgba(255,255,255,0.85);
+  }
+  .about-text p{ color:var(--grey); font-size:1.02rem; margin-top:18px; max-width:52ch; }
+  .stats-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+    margin-top:44px;
+    border-top:2px solid rgba(10,12,16,0.1);
+    padding-top:28px;
+  }
+  .stat-item strong{
+    display:block;
+    font-family:'Archivo',sans-serif;
+    font-weight:900;
+    font-size:clamp(2rem,3.4vw,2.6rem);
+    color:var(--blue);
+  }
+  .stat-item span{ font-size:0.88rem; color:var(--grey); }
+
+  /* ---------- PORTFOLIO PHOTO ---------- */
+  .portfolio-photo{ background:var(--black); color:var(--white); padding:120px 0 110px; }
+  .portfolio-photo .section-intro{ color:var(--grey-light); }
+  .filters{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin:40px 0 34px;
+  }
+  .filter-btn{
+    padding:9px 18px;
+    border:1px solid rgba(255,255,255,0.22);
+    color:var(--grey-light);
+    font-size:0.86rem;
+    font-weight:600;
+    clip-path:polygon(0 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%);
+    transition:all .18s ease;
+  }
+  .filter-btn:hover, .filter-btn:focus-visible{ border-color:var(--blue-bright); color:var(--white); }
+  .filter-btn.active{ background:var(--blue); border-color:var(--blue); color:var(--white); }
+
+  .photo-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+  }
+  .photo-tile{
+    aspect-ratio:3/4;
+    position:relative;
+    overflow:hidden;
+    clip-path:polygon(0 0,100% 0,100% 100%,10% 100%,0 88%);
+    background:linear-gradient(155deg,var(--black-3),var(--blue-deep) 140%);
+    transition:transform .3s ease;
+  }
+  .photo-tile:hover{ transform:translateY(-6px); }
+  .photo-tile .tile-inner{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    gap:8px;
+    color:rgba(255,255,255,0.8);
+  }
+  .photo-tile svg{ width:28px; height:28px; opacity:0.6; }
+  .photo-tile .tag{
+    position:absolute;
+    top:12px; left:12px;
+    font-size:0.72rem;
+    padding:5px 10px;
+    background:rgba(0,0,0,0.55);
+    color:var(--white);
+  }
+  .photo-tile.hide{ display:none; }
+
+  /* ---------- PORTFOLIO VIDEO ---------- */
+  .portfolio-video{ background:var(--ice); padding:120px 0 110px; }
+  .video-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    grid-template-rows:auto auto;
+    gap:18px;
+    margin-top:40px;
+  }
+  .video-tile{
+    position:relative;
+    aspect-ratio:16/10;
+    background:linear-gradient(160deg,var(--black-2),var(--blue-deep));
+    clip-path:polygon(0 0,100% 0,100% 100%,12% 100%,0 85%);
+    overflow:hidden;
+  }
+  .video-tile.featured{ grid-row:1 / 3; aspect-ratio:auto; }
+  .video-tile .play{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .play-btn{
+    width:56px; height:56px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.14);
+    border:1.5px solid rgba(255,255,255,0.6);
+    display:flex; align-items:center; justify-content:center;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .video-tile:hover .play-btn{ transform:scale(1.08); background:var(--blue); border-color:var(--blue); }
+  .play-btn svg{ width:16px; height:16px; margin-left:3px; }
+  .video-tile .duration{
+    position:absolute; bottom:12px; right:12px;
+    font-size:0.75rem; color:var(--white);
+    background:rgba(0,0,0,0.5);
+    padding:4px 9px;
+  }
+  .video-tile .vlabel{
+    position:absolute; top:12px; left:14px;
+    font-size:0.8rem; color:rgba(255,255,255,0.75);
+  }
+
+  /* ---------- PRICING ---------- */
+  .pricing{ background:var(--white); padding:120px 0 110px; }
+  .pricing-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+    margin-top:44px;
+    align-items:stretch;
+  }
+  .plan{
+    border:1px solid rgba(10,12,16,0.12);
+    padding:38px 30px 32px;
+    clip-path:polygon(0 0,100% 0,100% 100%,18px 100%,0 calc(100% - 18px));
+    display:flex; flex-direction:column;
+  }
+  .plan.featured{
+    background:var(--black);
+    color:var(--white);
+    border-color:var(--black);
+    transform:translateY(-14px);
+    box-shadow:0 24px 50px rgba(18,55,158,0.25);
+  }
+  .plan h3{ font-size:1.3rem; text-transform:uppercase; }
+  .plan .price{
+    font-family:'Archivo',sans-serif;
+    font-weight:900;
+    font-size:2.1rem;
+    margin-top:14px;
+    color:var(--blue);
+  }
+  .plan.featured .price{ color:var(--blue-bright); }
+  .plan .price small{ font-family:'Inter',sans-serif; font-weight:500; font-size:0.9rem; color:var(--grey); }
+  .plan ul{ margin-top:22px; display:flex; flex-direction:column; gap:12px; flex:1; }
+  .plan ul li{
+    font-size:0.92rem;
+    padding-left:18px;
+    position:relative;
+    color:var(--grey);
+  }
+  .plan.featured ul li{ color:var(--grey-light); }
+  .plan ul li::before{
+    content:'';
+    position:absolute; left:0; top:8px;
+    width:8px; height:2px;
+    background:var(--blue);
+  }
+  .plan.featured ul li::before{ background:var(--blue-bright); }
+  .plan .btn{ margin-top:28px; align-self:flex-start; }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials{ background:var(--ice); padding:120px 0; }
+  .quote-wrap{
+    position:relative;
+    max-width:760px;
+    margin:44px auto 0;
+    min-height:220px;
+  }
+  .quote-slide{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transform:translateY(10px);
+    transition:opacity .4s ease, transform .4s ease;
+    pointer-events:none;
+  }
+  .quote-slide.active{ opacity:1; transform:translateY(0); pointer-events:auto; }
+  .quote-slide p{
+    font-family:'Archivo',sans-serif;
+    font-weight:700;
+    font-size:clamp(1.2rem,2.4vw,1.6rem);
+    line-height:1.4;
+    letter-spacing:-0.01em;
+  }
+  .quote-slide .who{ margin-top:22px; font-size:0.92rem; color:var(--grey); }
+  .quote-slide .who strong{ color:var(--black); }
+  .dots{ display:flex; gap:10px; justify-content:center; margin-top:30px; }
+  .dot{ width:9px; height:9px; background:var(--grey-light); transition:background .2s ease, transform .2s ease; }
+  .dot.active{ background:var(--blue); transform:scale(1.3); }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    background:var(--black);
+    color:var(--white);
+    padding:120px 0 100px;
+    clip-path:polygon(0 60px,100% 0,100% 100%,0 100%);
+    margin-top:60px;
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:60px;
+    margin-top:44px;
+  }
+  .field{ margin-bottom:20px; }
+  .field label{ display:block; font-size:0.85rem; color:var(--grey-light); margin-bottom:8px; }
+  .field input, .field select, .field textarea{
+    width:100%;
+    background:var(--black-2);
+    border:1px solid rgba(255,255,255,0.14);
+    color:var(--white);
+    padding:13px 14px;
+    font-family:'Inter',sans-serif;
+    font-size:0.95rem;
+  }
+  .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible{
+    outline:2px solid var(--blue-bright);
+    outline-offset:1px;
+    border-color:var(--blue-bright);
+  }
+  .field textarea{ resize:vertical; min-height:110px; }
+  .form-msg{
+    margin-top:16px;
+    font-size:0.9rem;
+    color:var(--blue-bright);
+    display:none;
+  }
+  .form-msg.show{ display:block; }
+
+  .contact-info h4{ font-family:'Inter',sans-serif; font-weight:600; font-size:0.85rem; color:var(--grey-light); margin-bottom:10px; }
+  .contact-info .line{ font-size:1.05rem; margin-bottom:26px; }
+  .socials{ display:flex; gap:14px; margin-top:6px; }
+  .socials a{
+    width:42px; height:42px;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid rgba(255,255,255,0.18);
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .socials a:hover, .socials a:focus-visible{ background:var(--blue); border-color:var(--blue); }
+  .socials svg{ width:18px; height:18px; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--black-2);
+    color:var(--grey-light);
+    padding:34px 0;
+  }
+  .footer-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:16px;
+    font-size:0.85rem;
+  }
+  .to-top{
+    display:flex; align-items:center; gap:8px;
+    color:var(--grey-light);
+  }
+  .to-top:hover, .to-top:focus-visible{ color:var(--white); }
+  .to-top svg{ width:14px; height:14px; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:980px){
+    .nav-links, .nav-cta .btn-outline{ display:none; }
+    .burger{ display:flex; }
+    .mobile-panel{
+      display:none;
+      position:fixed; top:0; right:0; bottom:0; left:0;
+      background:var(--black);
+      z-index:99;
+      padding:110px 32px 40px;
+    }
+    .mobile-panel.open{ display:flex; flex-direction:column; gap:26px; }
+    .mobile-panel a{ font-family:'Archivo',sans-serif; font-weight:900; font-size:1.6rem; color:var(--white); text-transform:uppercase; }
+    .hero-grid, .about-grid, .video-grid, .contact-grid{ grid-template-columns:1fr; }
+    .hero-visual{ order:-1; max-width:340px; margin:0 auto; }
+    .stat-chip{ display:none; }
+    .photo-grid{ grid-template-columns:repeat(2,1fr); }
+    .pricing-grid{ grid-template-columns:1fr; }
+    .plan.featured{ transform:none; }
+    .video-tile.featured{ grid-row:auto; aspect-ratio:16/10; }
+    .stats-row{ grid-template-columns:1fr; gap:18px; }
+  }
+  @media (max-width:560px){
+    .container{ padding:0 20px; }
+    .photo-grid{ grid-template-columns:repeat(2,1fr); gap:12px; }
+    .hero{ padding-top:130px; }
+    .hero-copy h1{ font-size:2.3rem; }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="siteNav">
+  <div class="container nav-inner">
+    <a href="#hero" class="logo">ADRIAN <span>/</span> DRAS</a>
+    <nav class="nav-links">
+      <a href="#o-mnie">O mnie</a>
+      <a href="#portfolio-zdjecia">Portfolio zdjęć</a>
+      <a href="#portfolio-wideo">Portfolio wideo</a>
+      <a href="#cennik">Cennik</a>
+      <a href="#opinie">Opinie</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#kontakt" class="btn btn-outline">Umów sesję</a>
+      <button class="burger" id="burgerBtn" aria-label="Otwórz menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#o-mnie">O mnie</a>
+    <a href="#portfolio-zdjecia">Portfolio zdjęć</a>
+    <a href="#portfolio-wideo">Portfolio wideo</a>
+    <a href="#cennik">Cennik</a>
+    <a href="#opinie">Opinie</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <h1>Twoja sylwetka.<span class="l2">Mój kadr.</span></h1>
+      <p>Tworzę mocne zdjęcia sylwetkowe, portrety i krótkie formy wideo dla osób, które chcą pokazać swoją pracę, charakter i efekt — bez sztucznego pozowania.</p>
+      <div class="hero-actions">
+        <a href="#portfolio-zdjecia" class="btn btn-primary">Zobacz portfolio</a>
+        <a href="#kontakt" class="btn btn-outline">Umów sesję</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="ph ph-hero">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7l1.5-3h5L16 7"/><circle cx="12" cy="13.5" r="3.5"/></svg>
+        <span>Miejsce na Twoje zdjęcie</span>
+      </div>
+      <div class="stat-chip chip-1"><strong>2 lata</strong><span>doświadczenia fotograficznego</span></div>
+      <div class="stat-chip chip-2"><strong>WAŁBRZYCH / WROCŁAW</strong><span>obszar działania</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="o-mnie">
+  <div class="container about-grid">
+    <div class="ph ph-about">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+      <span>Miejsce na portret</span>
+    </div>
+    <div class="about-text">
+      <h2 class="section-heading">Fotografia sylwetkowa, portretowa i content dla osób, które chcą wyglądać tak dobrze, jak pracują</h2>
+      <p>Od 2 lat rozwijam się w fotografii, skupiając się przede wszystkim na sylwetce, portrecie i dynamicznym contencie. Zależy mi na kadrach, które mają charakter — odpowiednim świetle, kompozycji i momencie, który naprawdę coś pokazuje.</p>
+      <p>Najczęściej pracuję z osobami aktywnymi, trenerami i zawodnikami. Potrafię poprowadzić Cię podczas sesji tak, żebyś nie musiał zastanawiać się, jak stanąć przed aparatem — skupiasz się na sobie, ja zajmuję się kadrem.</p>
+      <div class="stats-row">
+        <div class="stat-item"><strong data-count="2">0</strong><span>lata doświadczenia fotograficznego</span></div>
+        <div class="stat-item"><strong data-count="2">0</strong><span>lata pracy z fotografią i wideo</span></div>
+        <div class="stat-item"><strong data-count="2">0</strong><span>główne obszary: foto + rolki</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio-photo" id="portfolio-zdjecia">
+  <div class="container">
+    <h2 class="section-heading">Portfolio zdjęć</h2>
+    <p class="section-intro">Sylwetka, portret, trening i backstage — zdjęcia budowane pod Twój charakter, markę osobistą albo sportowy progres.</p>
+    <div class="filters" id="filters">
+      <button class="filter-btn active" data-filter="all">Wszystkie</button>
+      <button class="filter-btn" data-filter="sylwetka">Sylwetka</button>
+      <button class="filter-btn" data-filter="ruch">Ruch</button>
+      <button class="filter-btn" data-filter="portret">Portret</button>
+      <button class="filter-btn" data-filter="backstage">Backstage</button>
+    </div>
+    <div class="photo-grid" id="photoGrid">
+      <!-- tiles generated below -->
+    </div>
+  </div>
+</section>
+
+<section class="portfolio-video" id="portfolio-wideo">
+  <div class="container">
+    <h2 class="section-heading">Portfolio wideo</h2>
+    <p class="section-intro">Rolki promocyjne, treningowe i personal branding — dynamiczne materiały stworzone z myślą o Instagramie i TikToku.</p>
+    <div class="video-grid">
+      <div class="video-tile featured">
+        <span class="vlabel">Wideo 01</span>
+        <div class="play"><div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div></div>
+        <span class="duration">1:12</span>
+      </div>
+      <div class="video-tile">
+        <span class="vlabel">Wideo 02</span>
+        <div class="play"><div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div></div>
+        <span class="duration">0:45</span>
+      </div>
+      <div class="video-tile">
+        <span class="vlabel">Wideo 03</span>
+        <div class="play"><div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div></div>
+        <span class="duration">0:38</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="cennik">
+  <div class="container">
+    <h2 class="section-heading">Oferta fotograficzna</h2>
+    <p class="section-intro">Wybierz format sesji albo napisz, czego potrzebujesz — przygotuję rozwiązanie pod konkretny cel.</p>
+    <div class="pricing-grid">
+      <div class="plan">
+        <h3>Sesja sylwetkowa</h3>
+        <div class="price">WYCENA</div>
+        <ul>
+          <li>1 godzina zdjęć</li>
+          <li>20 zdjęć w pełnej obróbce</li>
+          <li>Sylwetka + portret</li>
+          <li>Gotowe materiały do 5 dni</li>
+        </ul>
+        <button class="btn btn-outline-dark btn-small plan-cta" data-topic="foto">Zapytaj o termin</button>
+      </div>
+      <div class="plan featured">
+        <h3>Foto + rolki</h3>
+        <div class="price">WYCENA <small>polecana</small></div>
+        <ul>
+          <li>2 godziny — zdjęcia + rolki</li>
+          <li>30 zdjęć + 2 krótkie rolki</li>
+          <li>Pomysł i plan ujęć przed sesją</li>
+          <li>Gotowe materiały do 7 dni</li>
+        </ul>
+        <button class="btn btn-primary btn-small plan-cta" data-topic="rozszerzona">Zapytaj o termin</button>
+      </div>
+      <div class="plan">
+        <h3>Content dla marki</h3>
+        <div class="price">WYCENA</div>
+        <ul>
+          <li>Sesja contentowa dla trenera / zawodnika</li>
+          <li>Zdjęcia + rolki do social mediów</li>
+          <li>Materiały pod promocję usług i marki osobistej</li>
+          <li>Plan ujęć dopasowany do Twojej komunikacji</li>
+        </ul>
+        <button class="btn btn-outline-dark btn-small plan-cta" data-topic="transformacja">Zapytaj o termin</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="opinie">
+  <div class="container">
+    <h2 class="section-heading">Opinie</h2>
+    <div class="quote-wrap" id="quoteWrap">
+      <div class="quote-slide active">
+        <p>Dobre światło, konkretne wskazówki i zero stresu przed aparatem. Zdjęcia sylwetki wyszły dokładnie tak, jak chciałem.</p>
+        <div class="who"><strong>Marek T.</strong> — sesja sylwetkowa</div>
+      </div>
+      <div class="quote-slide">
+        <p>Rolki wyglądają profesjonalnie i w końcu mam content, który mogę regularnie wrzucać na social media.</p>
+        <div class="who"><strong>Ola K.</strong> — foto + rolki</div>
+      </div>
+      <div class="quote-slide">
+        <p>Adrian dobrze wyczuwa moment. Nie dostajesz przypadkowych zdjęć — każdy kadr ma konkretny charakter.</p>
+        <div class="who"><strong>Damian W.</strong> — sesja foto + rolki</div>
+      </div>
+    </div>
+    <div class="dots" id="dots"></div>
+  </div>
+</section>
+
+<section class="contact" id="kontakt">
+  <div class="container">
+    <h2 class="section-heading" style="color:var(--white)">Zróbmy dobry content</h2>
+    <p class="section-intro" style="color:var(--grey-light)">Napisz, czego potrzebujesz: zdjęć sylwetkowych, portretów, rolek promocyjnych albo całego pakietu. Działam w Wałbrzychu i Wrocławiu.</p>
+    <div class="contact-grid">
+      <form id="contactForm" novalidate>
+        <div class="field">
+          <label for="fname">Imię i nazwisko</label>
+          <input type="text" id="fname" name="fname" required>
+        </div>
+        <div class="field">
+          <label for="femail">Email</label>
+          <input type="email" id="femail" name="femail" required>
+        </div>
+        <div class="field">
+          <label for="ftopic">Temat</label>
+          <select id="ftopic" name="ftopic">
+            <option value="foto">Zdjęcia sylwetkowe / portretowe</option>
+            <option value="wideo">Rolki promocyjne</option>
+            <option value="rozszerzona">Foto + rolki</option>
+            <option value="transformacja">Content dla marki</option>
+            <option value="trening">Content dla marki osobistej</option>
+            <option value="inne">Inne</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fmsg">Wiadomość</label>
+          <textarea id="fmsg" name="fmsg" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Wyślij wiadomość</button>
+        <p class="form-msg" id="formMsg">Dzięki! Wiadomość dotarła — odezwę się w ciągu 24 godzin.</p>
+      </form>
+      <div class="contact-info">
+        <h4>Email</h4>
+        <div class="line">TWÓJ EMAIL</div>
+        <h4>Telefon</h4>
+        <div class="line">TWÓJ TELEFON</div>
+        <h4>Lokalizacja</h4>
+        <div class="line">Wałbrzych / Wrocław</div>
+        <h4>Social media</h4>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M14 9h3V5h-3c-2.2 0-4 1.8-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M11 10l4 2-4 2z" fill="white" stroke="none"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M14 4v10.5a3 3 0 1 1-3-3"/><path d="M14 4c.5 2.5 2 4 5 4.2"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 Adrian Dras. Wszystkie prawa zastrzeżone.</span>
+    <a href="#hero" class="to-top">Na górę <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
+  </div>
+</footer>
+
+<script>
+  // ---- sticky nav ----
+  const nav = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  // ---- mobile menu ----
+  const burger = document.getElementById('burgerBtn');
+  const panel = document.getElementById('mobilePanel');
+  burger.addEventListener('click', () => {
+    const open = panel.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+  });
+  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    panel.classList.remove('open');
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded', false);
+  }));
+
+  // ---- generate photo grid tiles ----
+  const categories = ['sylwetka','portret','ruch','backstage','sylwetka','portret','ruch','backstage'];
+  const catLabel = { sylwetka:'Sylwetka', ruch:'Ruch / trening', portret:'Portret', backstage:'Backstage' };
+  const grid = document.getElementById('photoGrid');
+  categories.forEach((cat, i) => {
+    const tile = document.createElement('div');
+    tile.className = 'photo-tile';
+    tile.dataset.cat = cat;
+    tile.innerHTML = `
+      <span class="tag">${catLabel[cat]}</span>
+      <div class="tile-inner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7l1.5-3h5L16 7"/><circle cx="12" cy="13.5" r="3.5"/></svg>
+        <span>Zdjęcie ${String(i+1).padStart(2,'0')}</span>
+      </div>`;
+    grid.appendChild(tile);
+  });
+
+  // ---- filter buttons ----
+  document.getElementById('filters').addEventListener('click', (e) => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.photo-tile').forEach(tile => {
+      tile.classList.toggle('hide', filter !== 'all' && tile.dataset.cat !== filter);
+    });
+  });
+
+  // ---- stat count-up ----
+  const stats = document.querySelectorAll('[data-count]');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const countUp = (el) => {
+    const target = parseInt(el.dataset.count, 10);
+    if (reduceMotion) { el.textContent = target; return; }
+    const dur = 1100;
+    const start = performance.now();
+    const step = (now) => {
+      const p = Math.min((now - start) / dur, 1);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  const statObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        countUp(entry.target);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.6 });
+  stats.forEach(s => statObserver.observe(s));
+
+  // ---- testimonial carousel ----
+  const slides = document.querySelectorAll('.quote-slide');
+  const dotsWrap = document.getElementById('dots');
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Opinia ' + (i+1));
+    d.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(d);
+  });
+  const dots = dotsWrap.querySelectorAll('.dot');
+  let current = 0, timer;
+  function goTo(i) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = i;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+  function next() { goTo((current + 1) % slides.length); }
+  function startAuto() { if (!reduceMotion) timer = setInterval(next, 6000); }
+  function stopAuto() { clearInterval(timer); }
+  startAuto();
+  const quoteWrap = document.getElementById('quoteWrap');
+  quoteWrap.addEventListener('mouseenter', stopAuto);
+  quoteWrap.addEventListener('mouseleave', startAuto);
+
+  // ---- pricing CTA -> contact form ----
+  document.querySelectorAll('.plan-cta').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.getElementById('ftopic').value = btn.dataset.topic;
+      document.getElementById('kontakt').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  });
+
+  // ---- contact form ----
+  const form = document.getElementById('contactForm');
+  const formMsg = document.getElementById('formMsg');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    formMsg.classList.add('show');
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
