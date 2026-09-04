@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adrian Dras — Fotograf sylwetkowy &amp; content creator</title>
+<title>Adrian Dras — Fotograf | Sylwetka, Portret, Rolki promocyjne</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -243,7 +243,7 @@
     clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);
     box-shadow:0 14px 30px rgba(0,0,0,0.35);
   }
-  .stat-chip strong{ display:block; font-family:'Archivo',sans-serif; font-weight:900; font-size:1.05rem; color:var(--blue-deep); }
+  .stat-chip strong{ display:block; font-family:'Archivo',sans-serif; font-weight:900; font-size:1.3rem; color:var(--blue-deep); }
   .stat-chip span{ font-size:0.78rem; color:var(--grey); }
   .chip-1{ top:-18px; left:-18px; }
   .chip-2{ bottom:22px; right:-22px; }
@@ -376,6 +376,19 @@
     position:absolute; top:12px; left:14px;
     font-size:0.8rem; color:rgba(255,255,255,0.75);
   }
+
+  .photo-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Sprawia, że zdjęcie wypełnia cały kafel nie tracąc proporcji */
+  display: block;
+  transition: transform .4s ease;
+}
+
+/* Subtelne zbliżenie samego zdjęcia po najechaniu myszką (opcjonalne) */
+.photo-tile:hover img {
+  transform: scale(1.05);
+}
 
   /* ---------- PRICING ---------- */
   .pricing{ background:var(--white); padding:120px 0 110px; }
@@ -566,11 +579,11 @@
 
 <header class="nav" id="siteNav">
   <div class="container nav-inner">
-    <a href="#hero" class="logo">ADRIAN <span>/</span> DRAS</a>
+    <a href="#hero" class="logo">Adrian <span>/</span> Dras</a>
     <nav class="nav-links">
       <a href="#o-mnie">O mnie</a>
       <a href="#portfolio-zdjecia">Portfolio zdjęć</a>
-      <a href="#portfolio-wideo">Portfolio wideo</a>
+      <a href="#portfolio-wideo">Rolki promocyjne</a>
       <a href="#cennik">Cennik</a>
       <a href="#opinie">Opinie</a>
       <a href="#kontakt">Kontakt</a>
@@ -585,7 +598,7 @@
   <div class="mobile-panel" id="mobilePanel">
     <a href="#o-mnie">O mnie</a>
     <a href="#portfolio-zdjecia">Portfolio zdjęć</a>
-    <a href="#portfolio-wideo">Portfolio wideo</a>
+    <a href="#portfolio-wideo">Rolki promocyjne</a>
     <a href="#cennik">Cennik</a>
     <a href="#opinie">Opinie</a>
     <a href="#kontakt">Kontakt</a>
@@ -595,8 +608,8 @@
 <section class="hero" id="hero">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <h1>Twoja sylwetka.<span class="l2">Mój kadr.</span></h1>
-      <p>Tworzę mocne zdjęcia sylwetkowe, portrety i krótkie formy wideo dla osób, które chcą pokazać swoją pracę, charakter i efekt — bez sztucznego pozowania.</p>
+      <h1>Trenujesz ciało.<span class="l2">Ja łapię moment.</span></h1>
+      <p>Fotograf specjalizujący się w zdjęciach sylwetkowych, portretowych oraz kręceniu rolek promocyjnych. Dostępny w Wałbrzychu i Wrocławiu — pokażmy razem Twoją pracę w kadrze.</p>
       <div class="hero-actions">
         <a href="#portfolio-zdjecia" class="btn btn-primary">Zobacz portfolio</a>
         <a href="#kontakt" class="btn btn-outline">Umów sesję</a>
@@ -607,8 +620,8 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7l1.5-3h5L16 7"/><circle cx="12" cy="13.5" r="3.5"/></svg>
         <span>Miejsce na Twoje zdjęcie</span>
       </div>
-      <div class="stat-chip chip-1"><strong>2 lata</strong><span>doświadczenia fotograficznego</span></div>
-      <div class="stat-chip chip-2"><strong>WAŁBRZYCH / WROCŁAW</strong><span>obszar działania</span></div>
+      <div class="stat-chip chip-1"><strong>2 lata</strong><span>doświadczenia w fotografii</span></div>
+      <div class="stat-chip chip-2"><strong>Wałbrzych</strong><span>/ Wrocław</span></div>
     </div>
   </div>
 </section>
@@ -620,13 +633,13 @@
       <span>Miejsce na portret</span>
     </div>
     <div class="about-text">
-      <h2 class="section-heading">Fotografia sylwetkowa, portretowa i content dla osób, które chcą wyglądać tak dobrze, jak pracują</h2>
-      <p>Od 2 lat rozwijam się w fotografii, skupiając się przede wszystkim na sylwetce, portrecie i dynamicznym contencie. Zależy mi na kadrach, które mają charakter — odpowiednim świetle, kompozycji i momencie, który naprawdę coś pokazuje.</p>
-      <p>Najczęściej pracuję z osobami aktywnymi, trenerami i zawodnikami. Potrafię poprowadzić Cię podczas sesji tak, żebyś nie musiał zastanawiać się, jak stanąć przed aparatem — skupiasz się na sobie, ja zajmuję się kadrem.</p>
+      <h2 class="section-heading">Adrian Dras — fotograf specjalizujący się w kadrach, które pokazują pracę i efekt</h2>
+      <p>Zajmuję się fotografią sylwetkową i portretową oraz kręceniem rolek promocyjnych. Zależy mi na kadrach, które pokazują nie tylko efekt końcowy, ale i charakter osoby przed obiektywem.</p>
+      <p>Działam na terenie Wałbrzycha i Wrocławia — sesje realizuję w studio oraz w plenerze, dopasowując miejsce do stylu zdjęć, na jakim Ci zależy.</p>
       <div class="stats-row">
-        <div class="stat-item"><strong data-count="2">0</strong><span>lata doświadczenia fotograficznego</span></div>
-        <div class="stat-item"><strong data-count="2">0</strong><span>lata pracy z fotografią i wideo</span></div>
-        <div class="stat-item"><strong data-count="2">0</strong><span>główne obszary: foto + rolki</span></div>
+        <div class="stat-item"><strong data-count="2">0</strong><span>lata doświadczenia w fotografii</span></div>
+        <div class="stat-item"><strong data-count="3">0</strong><span>specjalizacje: sylwetka, portret, rolki</span></div>
+        <div class="stat-item"><strong data-count="2">0</strong><span>miasta działania: Wałbrzych i Wrocław</span></div>
       </div>
     </div>
   </div>
@@ -635,37 +648,74 @@
 <section class="portfolio-photo" id="portfolio-zdjecia">
   <div class="container">
     <h2 class="section-heading">Portfolio zdjęć</h2>
-    <p class="section-intro">Sylwetka, portret, trening i backstage — zdjęcia budowane pod Twój charakter, markę osobistą albo sportowy progres.</p>
+    <p class="section-intro">Zdjęcia sylwetkowe, portretowe i kadry z planu — wybrane prace z ostatnich sesji.</p>
     <div class="filters" id="filters">
       <button class="filter-btn active" data-filter="all">Wszystkie</button>
       <button class="filter-btn" data-filter="sylwetka">Sylwetka</button>
-      <button class="filter-btn" data-filter="ruch">Ruch</button>
       <button class="filter-btn" data-filter="portret">Portret</button>
       <button class="filter-btn" data-filter="backstage">Backstage</button>
     </div>
     <div class="photo-grid" id="photoGrid">
-      <!-- tiles generated below -->
-    </div>
+  <div class="photo-tile" data-cat="sylwetka">
+    <span class="tag">Sylwetka</span>
+    <img src="Portoflio/1.jpg" alt="Zdjęcie sylwetkowe">
+  </div>
+
+  <div class="photo-tile" data-cat="portret">
+    <span class="tag">Portret</span>
+    <img src="Portoflio/2.jpg" alt="Portret">
+  </div>
+
+  <div class="photo-tile" data-cat="sylwetka">
+    <span class="tag">Sylwetka</span>
+    <img src="Portoflio/3.jpg" alt="Zdjęcie sylwetkowe">
+  </div>
+
+  <div class="photo-tile" data-cat="backstage">
+    <span class="tag">Backstage</span>
+    <img src="Portoflio/4.jpg" alt="Kulisy sesji">
+  </div>
+
+  <div class="photo-tile" data-cat="portret">
+    <span class="tag">Portret</span>
+    <img src="Portoflio/5.jpg" alt="Portret">
+  </div>
+
+  <div class="photo-tile" data-cat="sylwetka">
+    <span class="tag">Sylwetka</span>
+    <img src="Portoflio/6.jpg" alt="Zdjęcie sylwetkowe">
+  </div>
+
+  <div class="photo-tile" data-cat="portret">
+    <span class="tag">Portret</span>
+    <img src="Portoflio/7.jpg" alt="Portret">
+  </div>
+
+  <div class="photo-tile" data-cat="backstage">
+    <span class="tag">Backstage</span>
+    <img src="Portoflio/8.jpg" alt="Kulisy sesji">
+  </div>
+</div>
   </div>
 </section>
 
 <section class="portfolio-video" id="portfolio-wideo">
   <div class="container">
-    <h2 class="section-heading">Portfolio wideo</h2>
-    <p class="section-intro">Rolki promocyjne, treningowe i personal branding — dynamiczne materiały stworzone z myślą o Instagramie i TikToku.</p>
+    <h2 class="section-heading">Rolki promocyjne</h2>
+    <p class="section-intro">Krótkie, dynamiczne formy wideo — idealne do social mediów i promocji Twojej marki.</p>
     <div class="video-grid">
       <div class="video-tile featured">
-        <span class="vlabel">Wideo 01</span>
+        <span class="vlabel">Rolka 01</span>
         <div class="play"><div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div></div>
         <span class="duration">1:12</span>
       </div>
       <div class="video-tile">
-        <span class="vlabel">Wideo 02</span>
+        <span class="vlabel">Rolka 02</span>
         <div class="play"><div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div></div>
         <span class="duration">0:45</span>
       </div>
       <div class="video-tile">
-        <span class="vlabel">Wideo 03</span>
+        <span class="vlabel">Rolka 03</span>
         <div class="play"><div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div></div>
         <span class="duration">0:38</span>
       </div>
@@ -675,41 +725,41 @@
 
 <section class="pricing" id="cennik">
   <div class="container">
-    <h2 class="section-heading">Oferta fotograficzna</h2>
-    <p class="section-intro">Wybierz format sesji albo napisz, czego potrzebujesz — przygotuję rozwiązanie pod konkretny cel.</p>
+    <h2 class="section-heading">Cennik i usługi</h2>
+    <p class="section-intro">Trzy warianty współpracy — dopasowane do tego, co chcesz uwiecznić.</p>
     <div class="pricing-grid">
       <div class="plan">
-        <h3>Sesja sylwetkowa</h3>
-        <div class="price">WYCENA</div>
+        <h3>Sesja podstawowa</h3>
+        <div class="price">od 450 zł</div>
         <ul>
-          <li>1 godzina zdjęć</li>
+          <li>1 godzina sesji zdjęciowej</li>
           <li>20 zdjęć w pełnej obróbce</li>
-          <li>Sylwetka + portret</li>
-          <li>Gotowe materiały do 5 dni</li>
+          <li>Zdjęcia sylwetkowe i portretowe</li>
+          <li>Przekazanie w 5 dni roboczych</li>
         </ul>
         <button class="btn btn-outline-dark btn-small plan-cta" data-topic="foto">Zapytaj o termin</button>
       </div>
       <div class="plan featured">
-        <h3>Foto + rolki</h3>
-        <div class="price">WYCENA <small>polecana</small></div>
+        <h3>Sesja rozszerzona</h3>
+        <div class="price">od 850 zł <small>polecana</small></div>
         <ul>
-          <li>2 godziny — zdjęcia + rolki</li>
-          <li>30 zdjęć + 2 krótkie rolki</li>
-          <li>Pomysł i plan ujęć przed sesją</li>
-          <li>Gotowe materiały do 7 dni</li>
+          <li>2 godziny — zdjęcia i rolka promo</li>
+          <li>30 zdjęć + rolka 30–60 sek.</li>
+          <li>Konsultacja stylizacji przed sesją</li>
+          <li>Przekazanie w 7 dni roboczych</li>
         </ul>
         <button class="btn btn-primary btn-small plan-cta" data-topic="rozszerzona">Zapytaj o termin</button>
       </div>
       <div class="plan">
-        <h3>Content dla marki</h3>
-        <div class="price">WYCENA</div>
+        <h3>Pakiet rolki promocyjne</h3>
+        <div class="price">od 900 zł</div>
         <ul>
-          <li>Sesja contentowa dla trenera / zawodnika</li>
-          <li>Zdjęcia + rolki do social mediów</li>
-          <li>Materiały pod promocję usług i marki osobistej</li>
-          <li>Plan ujęć dopasowany do Twojej komunikacji</li>
+          <li>Kilka krótkich rolek pod social media</li>
+          <li>Montaż i kolorystyka w pakiecie</li>
+          <li>Możliwość łączenia z sesją zdjęciową</li>
+          <li>Przekazanie w 7 dni roboczych</li>
         </ul>
-        <button class="btn btn-outline-dark btn-small plan-cta" data-topic="transformacja">Zapytaj o termin</button>
+        <button class="btn btn-outline-dark btn-small plan-cta" data-topic="rolki">Zapytaj o termin</button>
       </div>
     </div>
   </div>
@@ -717,19 +767,19 @@
 
 <section class="testimonials" id="opinie">
   <div class="container">
-    <h2 class="section-heading">Opinie</h2>
+    <h2 class="section-heading">Co mówią klienci</h2>
     <div class="quote-wrap" id="quoteWrap">
       <div class="quote-slide active">
-        <p>Dobre światło, konkretne wskazówki i zero stresu przed aparatem. Zdjęcia sylwetki wyszły dokładnie tak, jak chciałem.</p>
+        <p>Sesja pokazała progres, którego sam nie widziałem na co dzień w lustrze. Świetne zdjęcia i jeszcze lepsza atmosfera.</p>
         <div class="who"><strong>Marek T.</strong> — sesja sylwetkowa</div>
       </div>
       <div class="quote-slide">
-        <p>Rolki wyglądają profesjonalnie i w końcu mam content, który mogę regularnie wrzucać na social media.</p>
-        <div class="who"><strong>Ola K.</strong> — foto + rolki</div>
+        <p>Rolka promocyjna, którą nagraliśmy, świetnie sprawdziła się w social mediach — profesjonalne podejście od pierwszego kontaktu.</p>
+        <div class="who"><strong>Ola K.</strong> — rolka promocyjna</div>
       </div>
       <div class="quote-slide">
-        <p>Adrian dobrze wyczuwa moment. Nie dostajesz przypadkowych zdjęć — każdy kadr ma konkretny charakter.</p>
-        <div class="who"><strong>Damian W.</strong> — sesja foto + rolki</div>
+        <p>Adrian dobrze wyczuwa ruch i moment — łapie kadry bez dziesiątek podejść, a atmosfera na sesji jest bardzo luźna.</p>
+        <div class="who"><strong>Damian W.</strong> — sesja rozszerzona</div>
       </div>
     </div>
     <div class="dots" id="dots"></div>
@@ -738,8 +788,8 @@
 
 <section class="contact" id="kontakt">
   <div class="container">
-    <h2 class="section-heading" style="color:var(--white)">Zróbmy dobry content</h2>
-    <p class="section-intro" style="color:var(--grey-light)">Napisz, czego potrzebujesz: zdjęć sylwetkowych, portretów, rolek promocyjnych albo całego pakietu. Działam w Wałbrzychu i Wrocławiu.</p>
+    <h2 class="section-heading" style="color:var(--white)">Umówmy sesję</h2>
+    <p class="section-intro" style="color:var(--grey-light)">Napisz kilka słów o tym, co chcesz uwiecznić — odezwę się w ciągu 24 godzin.</p>
     <div class="contact-grid">
       <form id="contactForm" novalidate>
         <div class="field">
@@ -753,11 +803,9 @@
         <div class="field">
           <label for="ftopic">Temat</label>
           <select id="ftopic" name="ftopic">
-            <option value="foto">Zdjęcia sylwetkowe / portretowe</option>
-            <option value="wideo">Rolki promocyjne</option>
-            <option value="rozszerzona">Foto + rolki</option>
-            <option value="transformacja">Content dla marki</option>
-            <option value="trening">Content dla marki osobistej</option>
+            <option value="foto">Sesja zdjęciowa</option>
+            <option value="rozszerzona">Sesja rozszerzona</option>
+            <option value="rolki">Pakiet rolki promocyjne</option>
             <option value="inne">Inne</option>
           </select>
         </div>
@@ -770,11 +818,11 @@
       </form>
       <div class="contact-info">
         <h4>Email</h4>
-        <div class="line">TWÓJ EMAIL</div>
+        <div class="line">kontakt@adriandras.pl</div>
         <h4>Telefon</h4>
-        <div class="line">TWÓJ TELEFON</div>
+        <div class="line">+48 600 000 000</div>
         <h4>Lokalizacja</h4>
-        <div class="line">Wałbrzych / Wrocław</div>
+        <div class="line">Wałbrzych / Wrocław — studio i plener</div>
         <h4>Social media</h4>
         <div class="socials">
           <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
@@ -816,21 +864,7 @@
   }));
 
   // ---- generate photo grid tiles ----
-  const categories = ['sylwetka','portret','ruch','backstage','sylwetka','portret','ruch','backstage'];
-  const catLabel = { sylwetka:'Sylwetka', ruch:'Ruch / trening', portret:'Portret', backstage:'Backstage' };
-  const grid = document.getElementById('photoGrid');
-  categories.forEach((cat, i) => {
-    const tile = document.createElement('div');
-    tile.className = 'photo-tile';
-    tile.dataset.cat = cat;
-    tile.innerHTML = `
-      <span class="tag">${catLabel[cat]}</span>
-      <div class="tile-inner">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7l1.5-3h5L16 7"/><circle cx="12" cy="13.5" r="3.5"/></svg>
-        <span>Zdjęcie ${String(i+1).padStart(2,'0')}</span>
-      </div>`;
-    grid.appendChild(tile);
-  });
+
 
   // ---- filter buttons ----
   document.getElementById('filters').addEventListener('click', (e) => {
