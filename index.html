@@ -264,6 +264,28 @@
     clip-path:polygon(12% 0,100% 0,100% 88%,88% 100%,0 100%,0 12%);
     color:rgba(255,255,255,0.85);
   }
+  .ph-about img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+  }
+  .about-media{ position:relative; }
+  .about-accent{
+    position:absolute;
+    right:-8%; bottom:-10%;
+    width:44%;
+    aspect-ratio:4/5;
+    background:linear-gradient(150deg,var(--black-3),var(--blue-deep));
+    clip-path:polygon(0 0,100% 0,100% 100%,10% 100%,0 88%);
+    border:4px solid var(--white);
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+    overflow:hidden;
+  }
+  .about-accent img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+  }
   .about-text p{ color:var(--grey); font-size:1.02rem; margin-top:18px; max-width:52ch; }
   .stats-row{
     display:grid;
@@ -339,19 +361,20 @@
   .portfolio-video{ background:var(--ice); padding:120px 0 110px; }
   .video-grid{
     display:grid;
-    grid-template-columns:1.4fr 1fr;
-    grid-template-rows:auto auto;
+    grid-template-columns:repeat(3,1fr);
     gap:18px;
     margin-top:40px;
+    max-width:760px;
+    margin-left:auto;
+    margin-right:auto;
   }
   .video-tile{
     position:relative;
-    aspect-ratio:16/10;
+    aspect-ratio:9/16;
     background:linear-gradient(160deg,var(--black-2),var(--blue-deep));
     clip-path:polygon(0 0,100% 0,100% 100%,12% 100%,0 85%);
     overflow:hidden;
   }
-  .video-tile.featured{ grid-row:1 / 3; aspect-ratio:auto; }
   .video-tile .play{
     position:absolute; inset:0;
     display:flex; align-items:center; justify-content:center;
@@ -375,7 +398,23 @@
   .video-tile .vlabel{
     position:absolute; top:12px; left:14px;
     font-size:0.8rem; color:rgba(255,255,255,0.75);
+    z-index:2;
+    transition:opacity .2s ease;
   }
+  .tile-video{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    background:transparent;
+  }
+  .video-tile .file-hint{
+    position:absolute; bottom:12px; left:14px;
+    font-size:0.7rem; color:rgba(255,255,255,0.4);
+    display:none; z-index:2;
+  }
+  .video-tile.no-video .file-hint{ display:block; }
+  .video-tile.playing .play{ opacity:0; pointer-events:none; }
+  .video-tile.playing .vlabel{ opacity:0; }
 
   .photo-tile img {
   width: 100%;
@@ -554,18 +593,20 @@
     }
     .mobile-panel.open{ display:flex; flex-direction:column; gap:26px; }
     .mobile-panel a{ font-family:'Archivo',sans-serif; font-weight:900; font-size:1.6rem; color:var(--white); text-transform:uppercase; }
-    .hero-grid, .about-grid, .video-grid, .contact-grid{ grid-template-columns:1fr; }
+    .hero-grid, .about-grid, .contact-grid{ grid-template-columns:1fr; }
     .hero-visual{ order:-1; max-width:340px; margin:0 auto; }
     .stat-chip{ display:none; }
+    .about-accent{ right:0; bottom:-6%; width:42%; }
     .photo-grid{ grid-template-columns:repeat(2,1fr); }
     .pricing-grid{ grid-template-columns:1fr; }
     .plan.featured{ transform:none; }
-    .video-tile.featured{ grid-row:auto; aspect-ratio:16/10; }
+    .video-grid{ max-width:100%; gap:12px; }
     .stats-row{ grid-template-columns:1fr; gap:18px; }
   }
   @media (max-width:560px){
     .container{ padding:0 20px; }
     .photo-grid{ grid-template-columns:repeat(2,1fr); gap:12px; }
+    .video-grid{ gap:8px; }
     .hero{ padding-top:130px; }
     .hero-copy h1{ font-size:2.3rem; }
   }
@@ -628,9 +669,15 @@
 
 <section class="about" id="o-mnie">
   <div class="container about-grid">
-    <div class="ph ph-about">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-      <span>Miejsce na portret</span>
+    <div class="about-media">
+      <div class="ph ph-about">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        <span>Miejsce na portret</span>
+        <img src="O-mnie/1.jpg" alt="Adrian Dras - portret" onerror="this.remove()">
+      </div>
+      <div class="about-accent">
+        <img src="O-mnie/2.jpg" alt="Adrian Dras podczas sesji zdjęciowej" onerror="this.remove()">
+      </div>
     </div>
     <div class="about-text">
       <h2 class="section-heading">Adrian Dras — fotograf specjalizujący się w kadrach, które pokazują pracę i efekt</h2>
@@ -706,18 +753,21 @@
     <div class="video-grid">
       <div class="video-tile featured">
         <span class="vlabel">Rolka 01</span>
-        <div class="play"><div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div></div>
-        <span class="duration">1:12</span>
+        <video class="tile-video" src="Rolki/rolka1.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="play"><button class="play-btn" aria-label="Odtwórz rolkę 1"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <span class="file-hint">Rolki/rolka1.mp4</span>
       </div>
       <div class="video-tile">
         <span class="vlabel">Rolka 02</span>
-        <div class="play"><div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div></div>
-        <span class="duration">0:45</span>
+        <video class="tile-video" src="Rolki/rolka2.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="play"><button class="play-btn" aria-label="Odtwórz rolkę 2"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <span class="file-hint">Rolki/rolka2.mp4</span>
       </div>
       <div class="video-tile">
         <span class="vlabel">Rolka 03</span>
-        <div class="play"><div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div></div>
-        <span class="duration">0:38</span>
+        <video class="tile-video" src="Rolki/rolka3.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="play"><button class="play-btn" aria-label="Odtwórz rolkę 3"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <span class="file-hint">Rolki/rolka3.mp4</span>
       </div>
     </div>
   </div>
@@ -865,6 +915,31 @@
 
   // ---- generate photo grid tiles ----
 
+
+  // ---- video tiles: play/pause + brak pliku ----
+  document.querySelectorAll('.video-tile').forEach(tile => {
+    const video = tile.querySelector('.tile-video');
+    const playBtn = tile.querySelector('.play-btn');
+    if (!video || !playBtn) return;
+    video.addEventListener('error', () => tile.classList.add('no-video'));
+    playBtn.addEventListener('click', () => {
+      if (tile.classList.contains('no-video')) return;
+      if (video.paused) {
+        video.muted = false;
+        video.controls = true;
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+    video.addEventListener('play', () => tile.classList.add('playing'));
+    video.addEventListener('pause', () => tile.classList.remove('playing'));
+    video.addEventListener('ended', () => {
+      tile.classList.remove('playing');
+      video.controls = false;
+      video.muted = true;
+    });
+  });
 
   // ---- filter buttons ----
   document.getElementById('filters').addEventListener('click', (e) => {
